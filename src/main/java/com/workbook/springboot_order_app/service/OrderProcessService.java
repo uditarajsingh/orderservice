@@ -17,7 +17,7 @@ public class OrderProcessService {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
-    private RuntimeService runtimeService;
+    RuntimeService runtimeService;
 
     @Autowired
     ProcessEngine processEngine;
@@ -25,7 +25,7 @@ public class OrderProcessService {
     @Autowired
     TaskService taskService;
 
-    public OrderProcessService(KafkaTemplate<String, String> kafkaTemplate, RuntimeService runtimeService) {
+    public OrderProcessService(KafkaTemplate<String, String> kafkaTemplate, RuntimeService runtimeService, TaskService taskService) {
         this.kafkaTemplate = kafkaTemplate;
         this.runtimeService = runtimeService;
         this.taskService = taskService;
