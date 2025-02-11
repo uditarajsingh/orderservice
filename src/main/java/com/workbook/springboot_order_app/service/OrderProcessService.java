@@ -1,7 +1,6 @@
 package com.workbook.springboot_order_app.service;
 
 import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.task.Task;
@@ -17,7 +16,6 @@ public class OrderProcessService {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-
     @Autowired
     private RuntimeService runtimeService;
 
@@ -26,9 +24,6 @@ public class OrderProcessService {
 
     @Autowired
     TaskService taskService;
-/*
-    @Autowired
-    private TestProcess testProcess;*/
 
     public OrderProcessService(KafkaTemplate<String, String> kafkaTemplate, RuntimeService runtimeService) {
         this.kafkaTemplate = kafkaTemplate;
@@ -49,10 +44,4 @@ public class OrderProcessService {
         taskService.complete(task.getId());
     }
 
-    // Get all tasks
-    public void getTasks() {
-        for (Task task : processEngine.getTaskService().createTaskQuery().list()) {
-            System.out.println("Task: " + task.getName());
-        }
-    }
 }

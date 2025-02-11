@@ -7,20 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-
 @Service
 public class RestaurantService {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    @Autowired
-    private RuntimeService runtimeService;
-
-
-    public RestaurantService(KafkaTemplate<String, String> kafkaTemplate, RuntimeService runtimeService) {
+    public RestaurantService(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
-        this.runtimeService = runtimeService;
     }
 
     public void processDelivery(Long orderId) {

@@ -12,9 +12,9 @@ public class OrderController {
     OrderProcessService orderService;
 
 
-    @GetMapping("/place/{id}")
-    public String placeOrder(@PathVariable Long id) {
-        orderService.placeOrder(id);
+    @GetMapping("/place/{orderId}")
+    public String placeOrder(@PathVariable Long orderId) {
+        orderService.placeOrder(orderId);
         return "Order Placed.";
     }
 
@@ -22,12 +22,6 @@ public class OrderController {
     public String completeTask(@PathVariable String orderId) {
         orderService.completeUserTask(orderId);
         return "Order Completed!";
-    }
-
-    @GetMapping("/tasks")
-    public String getTask() {
-        orderService.getTasks();
-        return "Task Completed!";
     }
 
 }
