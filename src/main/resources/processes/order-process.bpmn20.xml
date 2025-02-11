@@ -6,7 +6,7 @@
 
     <bpmn2:process id="orderProcess" name="Order Process" isExecutable="true">
         <bpmn2:startEvent id="startEvent" name="Cart Created" />
-        <bpmn2:userTask id="confirmOrderTask" name="Confirm Order" activiti:assignee="manager" />
+        <bpmn2:userTask id="confirmOrderTask" name="Confirm Order" activiti:assignee="customer" />
         <bpmn2:sequenceFlow id="flow1" sourceRef="startEvent" targetRef="confirmOrderTask" />
         <bpmn2:sequenceFlow id="flow2" sourceRef="confirmOrderTask" targetRef="paymentTask" />
         <bpmn2:serviceTask id="paymentTask" name="Process Payment" activiti:expression="${orderProcessService.processPayment(orderId)}" />

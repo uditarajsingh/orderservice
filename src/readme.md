@@ -11,3 +11,7 @@ Proceed to payment: http://localhost:8080/orders/tasks/proceedToPayment/{orderID
 This will complete the confirmation task and payment event will be triggered
 On completion of payment event, Activiti will call delivery task and delivery event will be triggered.
 
+Activiti Tables to follow:
+select * from act_hi_actinst order by start_time_ desc;
+select * from act_hi_taskinst order by start_time_ desc;
+select * from act_hi_procinst order by start_time_ desc;
