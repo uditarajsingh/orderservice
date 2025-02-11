@@ -15,3 +15,10 @@ Activiti Tables to follow:
 select * from act_hi_actinst order by start_time_ desc;
 select * from act_hi_taskinst order by start_time_ desc;
 select * from act_hi_procinst order by start_time_ desc;
+
+workflow:
+startEvent (Cart Created) --> user task confirmOrderTask to Confirm the Order 
+--> Once the Customer approves/confirms to proceed to payment, service task paymentTask is triggered. 
+Kafka sends payment-events. --> Payment consumer consumes this event. Once this task is completed, delivery task
+is triggered -> delivery task to Notify Restaurant will trigger delivery-events -->
+Delivery Consumer will consume this topic --> endEvent with Order Completed

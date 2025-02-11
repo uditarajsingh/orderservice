@@ -38,7 +38,6 @@ public class OrderProcessService {
 
     public void placeOrder(Long orderId) {
         runtimeService.startProcessInstanceByKey("orderProcess", Collections.singletonMap("orderId", orderId));
-
     }
 
     public void processPayment(Long orderId) {
