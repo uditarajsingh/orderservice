@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>
+		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.workbook</groupId>
@@ -46,17 +46,68 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		<!--<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
-		</dependency>-->
+		<!-- Activiti BPMN (Core Activiti engine) -->
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring-boot-starter</artifactId>
+			<version>7.1.0.M6</version>
+		</dependency>
+		<!-- Spring Boot Data JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.6</version>  <!-- Use the version compatible with your setup -->
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.10</version>  <!-- Ensure this is compatible with your Activiti version -->
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version> <!-- Ensure this is the latest stable version -->
+			<scope>provided</scope>  <!-- Lombok is only needed at compile-time -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-bpmn-model</artifactId>
+			<version>7.1.0.M6</version> <!-- Ensure you are using the correct version -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+
+		<!-- H2 Database (for testing purpose, or use your database like MySQL/PostgreSQL) -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.3.232</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

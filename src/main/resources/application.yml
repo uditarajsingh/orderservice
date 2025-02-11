@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: springboot-order-app
+  datasource:
+    url: jdbc:h2:~/test;DB_CLOSE_DELAY=-1;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  activiti:
+    database-schema-update: true
+    check-process-definitions: false
+    async-executor-activate: true
+    history-level: full
+    check-process-variables: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  logging:
+    level:
+      root: INFO
+      org.activiti.engine: DEBUG
+      org.activiti.spring: DEBUG
+      org.activiti.engine.impl.persistence: DEBUG
+
+kafka:
+  consumer:
+    group-id: order-group
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  bootstrap-servers: localhost:9092
+  payment-topic: "payment-events"
+  delivery-topic: "delivery-events"
+
+server:
+  port: 8080
+
+security:
+  protocol: PLAINTEXT

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:activiti="http://activiti.org/bpmn"
+                   xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/BPMN20.xsd" targetNamespace="TestDemo">
+
+    <bpmn2:process id="orderProcess" name="Order Process" isExecutable="true">
+        <bpmn2:startEvent id="startEvent" name="Cart Created" />
+        <bpmn2:userTask id="confirmOrderTask" name="Confirm Order" activiti:assignee="manager" />
+        <bpmn2:sequenceFlow id="flow1" sourceRef="startEvent" targetRef="confirmOrderTask" />
+        <bpmn2:sequenceFlow id="flow2" sourceRef="confirmOrderTask" targetRef="paymentTask" />
+        <bpmn2:serviceTask id="paymentTask" name="Process Payment" activiti:expression="${orderProcessService.processPayment(orderId)}" />
+        <bpmn2:sequenceFlow id="flow3" sourceRef="paymentTask" targetRef="deliveryTask" />
+        <bpmn2:serviceTask id="deliveryTask" name="Notify Restaurant" activiti:expression="${restaurantService.processDelivery(orderId)}" />
+        <bpmn2:sequenceFlow id="flow4" sourceRef="deliveryTask" targetRef="endEvent" />
+        <bpmn2:endEvent id="endEvent" name="Order Completed" />
+    </bpmn2:process>
+</bpmn2:definitions>
+
